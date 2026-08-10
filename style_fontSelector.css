@@ -2,7 +2,8 @@
 #fontPanel {
   position: fixed;
   top: 10px;
-  right: 10px;
+  left: 10px;
+  right: auto;
   z-index: 9999;
   font-family: 'IBM Plex Mono', monospace;
   background: rgba(20, 20, 20, 0.92);
