@@ -1,270 +1,216 @@
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2C860CZFJC"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
 
-    gtag('config', 'G-2C860CZFJC');
-  </script>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>STG _v.Vessel</title>
 
-  <!-- <script src="p5_1.7.0_p5.min.js"></script> -->
-  <script src="p5_1.6.0_p5.min.js"></script>
-  <script src="p5.js-svg_at_1.5.1.js"></script>
-  <script src="h264-mp4-encoder_embuild_dist_h264-mp4-encoder.web.js"></script>
-  
-  <link rel="stylesheet" href="style_vessel.css">
-  <script src="jquery-1.12.4.js"></script>
-  <script src="ui_1.12.1_jquery-ui.js"></script>
-  <script src="sketch_vessel.js" type="text/javascript"></script>
-  <script src="vessel_script/update.js" type="text/javascript"></script>
-  <script src="vessel_script/animators.js" type="text/javascript"></script>
-  <script src="vessel_script/recording.js" type="text/javascript"></script>
-
-  <script src="vessel_script/0_classBase.js" type="text/javascript"></script>
-  <script src="vessel_script/1_classLine.js" type="text/javascript"></script>
-
-  <link rel="preconnect" href="index.html">
-  <link href="css2_family3DIBM2BPlex2BSans3Awght4030026disp.css" rel="stylesheet">
-
-  <style> body {padding: 0; margin: 0;} canvas {vertical-align: top;} </style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>STG</title>
+<!-- <script src="p5_1.7.0_p5.min.js"></script> -->
+<script src="p5_1.6.0_p5.min.js"></script>
+<script src="p5.js-svg_at_1.5.1.js"></script>
+<script src="h264-mp4-encoder_embuild_dist_h264-mp4-encoder.web.js"></script>
+<link href="style_vessel.css" rel="stylesheet"/>
+<script src="jquery-1.12.4.js"></script>
+<script src="ui_1.12.1_jquery-ui.js"></script>
+<script src="sketch_vessel.js" type="text/javascript"></script>
+<script src="vessel_script/update.js" type="text/javascript"></script>
+<script src="vessel_script/animators.js" type="text/javascript"></script>
+<script src="vessel_script/recording.js" type="text/javascript"></script>
+<script src="vessel_script/0_classBase.js" type="text/javascript"></script>
+<script src="vessel_script/1_classLine.js" type="text/javascript"></script>
+<link href="index.html" rel="preconnect"/>
+<link href="css2_family3DIBM2BPlex2BSans3Awght4030026disp.css" rel="stylesheet"/>
+<style> body {padding: 0; margin: 0;} canvas {vertical-align: top;} </style>
 </head>
-
 <body>
-  <div id="widget">
-    <div class="dropdown">
-      <button class="dropbtn">Select...</button>
-      <div class="dropdown-content">
-        <a href='index.html'>CYLINDER</a>
-        <a href='field.html'>FIELD</a>
-        <a href='stripes.html'>STRIPES</a>
-        <a href='coil.html'>COIL</a>
-        <a href='flag.html'>FLAG</a>
-        <a href='morisawa.html'>MORISAWA</a>
-        <a href='cascade.html'>CASCADE</a>
-        <a href='ribbon.html'>RIBBON</a>
-        <a href='layers.html'>LAYERS</a>
-        <a href='danger.html'>DANGER</a>
-        <a href='string.html'>STRING</a>
-        <a href='badge.html'>BADGE</a>
-        <a href='clutter.html'>CLUTTER</a>
-        <a href='construct.html'>CONSTRUCT</a>
-        <a href='snap.html'>SNAP</a>
-        <a href='flash.html'>FLASH</a>
-        <a href='pow.html'>POW</a>
-        <a href='crash.html'>CRASH</a>
-        <a href='crashclock.html'>CRASH CLOCK</a>
-        <a href='vessel.html'>VESSEL</a>
-        <a href='shine.html'>SHINE</a>
-        <a href='boost.html'>BOOST</a>
-      <a href='boxsquad.html'>BoxSquad</a>
+<div id="widget">
+<div class="dropdown">
+<button class="dropbtn">Select...</button>
+<div class="dropdown-content">
+<a href="index.html">CYLINDER</a>
+<a href="field.html">FIELD</a>
+<a href="stripes.html">STRIPES</a>
+<a href="coil.html">COIL</a>
+<a href="flag.html">FLAG</a>
+<a href="morisawa.html">MORISAWA</a>
+<a href="cascade.html">CASCADE</a>
+<a href="ribbon.html">RIBBON</a>
+<a href="layers.html">LAYERS</a>
+<a href="danger.html">DANGER</a>
+<a href="string.html">STRING</a>
+<a href="badge.html">BADGE</a>
+<a href="clutter.html">CLUTTER</a>
+<a href="construct.html">CONSTRUCT</a>
+<a href="snap.html">SNAP</a>
+<a href="flash.html">FLASH</a>
+<a href="pow.html">POW</a>
+<a href="crash.html">CRASH</a>
+<a href="crashclock.html">CRASH CLOCK</a>
+<a href="vessel.html">VESSEL</a>
+<a href="shine.html">SHINE</a>
+<a href="boost.html">BOOST</a>
+<a href="boxsquad.html">BoxSquad</a>
+</div>
+</div>
+<div id="generatorInput">
+<div class="titleh2">
+<h2>STG v.Vessel</h2>
 
-      </div>
-    </div>
-    
-    <div id="generatorInput">
-      <div class="titleh2">
-        <h2>STG v.Vessel</h2>
-        <p>a kinetic generator from <a href="https://www.instagram.com/kiel.d.m/" target="_blank">kielm</a></p>
-        <div class="popup" onclick="myFunction()">Readme and Support!
-          <span class="popuptext" id="myPopup">
-            Vessel 1.0
-            <br>
-            <br>Consider supporting STG by <br> <a href="https://www.buymeacoffee.com/kieldm" target="_blank">Buying Me A Coffee</a>
-            <br>
-            <br>Use for anything personal!
-            <br>Give me a <a href="https://www.instagram.com/kiel.d.m/" target="_blank">tag</a> if possible.
-            <br>
-            <br>For commercial usage, <a href="https://spacetypegenerator.com/cdn-cgi/l/email-protection#f3989a969fdd97dd9eb3949e929a9fdd909c9e">email me.</a>
-            <br>
-            <br>Featuring fonts from <br><a href="https://www.zetafonts.com/" target="_blank">Zetafonts</a> (Milligram, Unigeo, Dialogue),<br>
-            and <a href="https://pangrampangram.com/" target="_blank">Pangram Pangram</a>(Editorial New, RadioGrotesk, NeueWorld),<br>
-          </span>
-        </div>
-      </div>
-
-      <button type="button" class="collapsible"><h1>TEXT</h1></button>
-      <div class="content">
-        <div class="module">         
-          <textarea id="textArea" rows=4 oninput="setText()"></textarea>
-          <select name="fontChange" id="fontChange" onchange="setFont(this.value)">
-            <option value="0" selected="selected">Milligram - Regular</option>
-            <option value="1">Object Sans - Heavy</option>
-            <option value="2">Editorial New - Thin</option>
-            <option value="3">NeueWorld - SemiCondensedLight</option>
-            <option value="4">Unigeo32 - Light</option>
-            <option value="5">Dialogue A - Light</option>
-          </select>
+<div class="popup">Readme and Support!
           
-          <div class="coupling1">
-            <div class="coupling_label"><h3>Size</h3></div>
-            <input type="range" min="0" max="100" value="30" id="pgTextSize" oninput="setPGtextSize(this.value)">
-          </div>
-        </div>
-      </div>
-
-      <button type="button" class="collapsible"><h1>STYLE</h1></button>
-      <div class="content">
-        <div class="module">
-          <div class="coupling1">
-            <label for="debugToggle">Debug</label>
-            <input type="checkbox" id="debugToggle" name="debugToggle" onclick="setDebugOn()">
-          </div>
-          
-          <div class="coupling3">
-            <div class="coupling_label3"><h4>Crest</h4></div>
-            <div class="coupling2">
-              <div class="couplingEntry">
-                <input type="radio" id="none" name="connectSet" value=0 onclick="setCrestType(this.value)">
-                <label for="none">None</label>
-              </div>
-              <div class="couplingEntry">
-                <input type="radio" id="strokeCrest" name="connectSet" value=1 onclick="setCrestType(this.value)" checked>
-                <label for="strokeCrest">Stroke</label>
-              </div>
-              <div class="couplingEntry">
-                <input type="radio" id="fillCrest" name="connectSet" value=2 onclick="setCrestType(this.value)">
-                <label for="fillCrest">Fill</label>
-              </div>
-            </div>
-
-            <div id="strokeVis" class="coupling4" >
-              <div class="coupling_label"><h3>Stroke</h3></div>
-              <input type="range" min="0" max="100" value="5" id="vesselSW" oninput="setVesselSW(this.value)">
-            </div>
-          </div>
-
-          <div class="coupling1">
-            <div class="coupling_label">Fore</div>
-            <input type="color" id="foreColor" name="foreColor" value="#ffffff" oninput="setForeColor(this.value)">
-          </div>
-          
-          <div class="coupling1">
-            <div class="coupling_label">Bkgd</div>
-            <input type="color" id="bkgdColor" name="bkgdColor" value="#000000" oninput="setBkgdColor(this.value)">
-          </div>
-          
-          <div class="coupling1">
-            <div class="coupling_label">Debug</div>
-            <input type="color" id="debugColor" name="debugColor" value="#00ff00" oninput="setDebugColor(this.value)">
-          </div>
-        </div>
-      </div>
-
-      <button type="button" class="collapsible"><h1>MOTION</h1></button>
-      <div class="content">
-        <div class="coupling1">
-          <label for="centerToggle">Keep Centered</label>
-          <input type="checkbox" id="centerToggle" name="centerToggle" onclick="setCenterOn()">
-        </div>
-
-        <div class="module">
-          <div class="accelModule">
-            <!-- <h4>INTRO STAGE</h4> -->
-            <div class="selectPair">
-              <select name="stageAstrength" class="stageSelect" onchange="setStageAstrength(this.value)">
-                <option value="0">Sine</option>
-                <option value="1">Cubic</option>
-                <option value="2">Circ</option>
-                <option value="3" selected="selected">Expo</option>
-                <option value="4">Back</option>
-                <option value="5">Bounce</option>
-                <option value="6">Elastic</option>
-              </select>
-  
-              <select name="stageAdirect" class="stageSelect" onchange="setStageAdirect(this.value)">
-                <option value="0">In</option>
-                <option value="1">Out</option>
-                <option value="2" selected="selected">In & Out</option>
-              </select>
-            </div>    
-  
-            <div class="coupling1">
-              <div class="coupling_label"><h3>Length</h3></div>
-              <input type="range" min="0" max="100" value="60" id="stageAlength" oninput="setStageAlength()">
-            </div>      
-
-            <div class="coupling1">
-              <div class="coupling_label"><h3>Pause</h3></div>
-              <input type="range" min="0" max="100" value="30" id="stageBlength" oninput="setStageBlength()">
-            </div>
-          </div> 
-          
-          <!-- <select name="offsetArrange" id="offsetArrange" onchange="setOffsetArrang(this.value)">
+</div>
+</div>
+<button class="collapsible" type="button"><h1>TEXT</h1></button>
+<div class="content">
+<div class="module">
+<textarea id="textArea" oninput="setText()" rows="4"></textarea>
+<select id="fontChange" name="fontChange" onchange="setFont(this.value)">
+<option selected="selected" value="0">Milligram - Regular</option>
+<option value="1">Object Sans - Heavy</option>
+<option value="2">Editorial New - Thin</option>
+<option value="3">NeueWorld - SemiCondensedLight</option>
+<option value="4">Unigeo32 - Light</option>
+<option value="5">Dialogue A - Light</option>
+</select>
+<div class="coupling1">
+<div class="coupling_label"><h3>Size</h3></div>
+<input id="pgTextSize" max="100" min="0" oninput="setPGtextSize(this.value)" type="range" value="30"/>
+</div>
+</div>
+</div>
+<button class="collapsible" type="button"><h1>STYLE</h1></button>
+<div class="content">
+<div class="module">
+<div class="coupling1">
+<label for="debugToggle">Debug</label>
+<input id="debugToggle" name="debugToggle" onclick="setDebugOn()" type="checkbox"/>
+</div>
+<div class="coupling3">
+<div class="coupling_label3"><h4>Crest</h4></div>
+<div class="coupling2">
+<div class="couplingEntry">
+<input id="none" name="connectSet" onclick="setCrestType(this.value)" type="radio" value="0"/>
+<label for="none">None</label>
+</div>
+<div class="couplingEntry">
+<input checked="" id="strokeCrest" name="connectSet" onclick="setCrestType(this.value)" type="radio" value="1"/>
+<label for="strokeCrest">Stroke</label>
+</div>
+<div class="couplingEntry">
+<input id="fillCrest" name="connectSet" onclick="setCrestType(this.value)" type="radio" value="2"/>
+<label for="fillCrest">Fill</label>
+</div>
+</div>
+<div class="coupling4" id="strokeVis">
+<div class="coupling_label"><h3>Stroke</h3></div>
+<input id="vesselSW" max="100" min="0" oninput="setVesselSW(this.value)" type="range" value="5"/>
+</div>
+</div>
+<div class="coupling1">
+<div class="coupling_label">Fore</div>
+<input id="foreColor" name="foreColor" oninput="setForeColor(this.value)" type="color" value="#ffffff"/>
+</div>
+<div class="coupling1">
+<div class="coupling_label">Bkgd</div>
+<input id="bkgdColor" name="bkgdColor" oninput="setBkgdColor(this.value)" type="color" value="#000000"/>
+</div>
+<div class="coupling1">
+<div class="coupling_label">Debug</div>
+<input id="debugColor" name="debugColor" oninput="setDebugColor(this.value)" type="color" value="#00ff00"/>
+</div>
+</div>
+</div>
+<button class="collapsible" type="button"><h1>MOTION</h1></button>
+<div class="content">
+<div class="coupling1">
+<label for="centerToggle">Keep Centered</label>
+<input id="centerToggle" name="centerToggle" onclick="setCenterOn()" type="checkbox"/>
+</div>
+<div class="module">
+<div class="accelModule">
+<!-- <h4>INTRO STAGE</h4> -->
+<div class="selectPair">
+<select class="stageSelect" name="stageAstrength" onchange="setStageAstrength(this.value)">
+<option value="0">Sine</option>
+<option value="1">Cubic</option>
+<option value="2">Circ</option>
+<option selected="selected" value="3">Expo</option>
+<option value="4">Back</option>
+<option value="5">Bounce</option>
+<option value="6">Elastic</option>
+</select>
+<select class="stageSelect" name="stageAdirect" onchange="setStageAdirect(this.value)">
+<option value="0">In</option>
+<option value="1">Out</option>
+<option selected="selected" value="2">In &amp; Out</option>
+</select>
+</div>
+<div class="coupling1">
+<div class="coupling_label"><h3>Length</h3></div>
+<input id="stageAlength" max="100" min="0" oninput="setStageAlength()" type="range" value="60"/>
+</div>
+<div class="coupling1">
+<div class="coupling_label"><h3>Pause</h3></div>
+<input id="stageBlength" max="100" min="0" oninput="setStageBlength()" type="range" value="30"/>
+</div>
+</div>
+<!-- <select name="offsetArrange" id="offsetArrange" onchange="setOffsetArrang(this.value)">
             <option value="0" selected="selected">Left - Right</option>
             <option value="1">Inside Out</option>
           </select> -->
-          
-          <div class="coupling1">
-            <div class="coupling_label"><h3>Letter</h3></div>
-            <input type="range" min="0" max="100" value="5" id="letterOffset" oninput="setLetterOffset(this.value)">
-          </div>
-          <div class="coupling1">
-            <div class="coupling_label"><h3>Line</h3></div>
-            <input type="range" min="0" max="100" value="5" id="lineOffset" oninput="setLineOffset(this.value)">
-          </div>
-        </div>
-      </div>
-
-      <button type="button" class="collapsible"><h1>EXPORT</h1></button>
-      <div class="content">
-        <div class="coupling3">
-          <div class="couplingEntry">
-            <input type="radio" id="window" name="saveSize" value=0 onclick="sizeSaveChange(this.value)" checked>
-            <label for="window">Window Size</label>
-          </div>
-          <div class="couplingEntry">
-            <input type="radio" id="vert" name="saveSize" value=1 onclick="sizeSaveChange(this.value)">
-            <label for="vert">Vertical, 9:16</label>
-          </div>
-          <div class="couplingEntry">
-            <input type="radio" id="squa" name="saveSize" value=2 onclick="sizeSaveChange(this.value)">
-            <label for="squa">Square, 1:1</label>
-          </div>
-        </div>
-
-        <div class="coupling1">
-          <button type="button" class="saveSVGbutton" onclick="runSVGsave()">SAVE SVG</button>
-        </div>
-        <div class="coupling1">
-          <button type="button" class="saveJPGbutton" onclick="runJPGsave()">SAVE JPG</button>
-        </div>
-        <div class="coupling1">
-          <button type="button" class="saveMP4button" onclick="runSave()">RECORD MP4</button>
-        </div>
-        <div class="coupling1">
-          <div id="recStatus">
-            <p>RECORDING IN PROCESS <br><span id="recTicker"></span>/300 frames</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- <input type="text" value="SPOOKY ACTION" id="text0" oninput="setText(this.value)"> -->
-
-  <div>
-    <label class="switch">
-      <input type="checkbox" checked oninput="hideWidget()">
-      <span class="slider round"></span>
-    </label>
-  </div>
-
-  <script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // When the user clicks on <div>, open the popup
-    function myFunction() {
-      var popup = document.getElementById("myPopup");
-      popup.classList.toggle("show");
-    }
-  </script>
-
-  <script>
+<div class="coupling1">
+<div class="coupling_label"><h3>Letter</h3></div>
+<input id="letterOffset" max="100" min="0" oninput="setLetterOffset(this.value)" type="range" value="5"/>
+</div>
+<div class="coupling1">
+<div class="coupling_label"><h3>Line</h3></div>
+<input id="lineOffset" max="100" min="0" oninput="setLineOffset(this.value)" type="range" value="5"/>
+</div>
+</div>
+</div>
+<button class="collapsible" type="button"><h1>EXPORT</h1></button>
+<div class="content">
+<div class="coupling3">
+<div class="couplingEntry">
+<input checked="" id="window" name="saveSize" onclick="sizeSaveChange(this.value)" type="radio" value="0"/>
+<label for="window">Window Size</label>
+</div>
+<div class="couplingEntry">
+<input id="vert" name="saveSize" onclick="sizeSaveChange(this.value)" type="radio" value="1"/>
+<label for="vert">Vertical, 9:16</label>
+</div>
+<div class="couplingEntry">
+<input id="squa" name="saveSize" onclick="sizeSaveChange(this.value)" type="radio" value="2"/>
+<label for="squa">Square, 1:1</label>
+</div>
+</div>
+<div class="coupling1">
+<button class="saveSVGbutton" onclick="runSVGsave()" type="button">SAVE SVG</button>
+</div>
+<div class="coupling1">
+<button class="saveJPGbutton" onclick="runJPGsave()" type="button">SAVE JPG</button>
+</div>
+<div class="coupling1">
+<button class="saveMP4button" onclick="runSave()" type="button">RECORD MP4</button>
+</div>
+<div class="coupling1">
+<div id="recStatus">
+<p>RECORDING IN PROCESS <br/><span id="recTicker"></span>/300 frames</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- <input type="text" value="SPOOKY ACTION" id="text0" oninput="setText(this.value)"> -->
+<div>
+<label class="switch">
+<input checked="" oninput="hideWidget()" type="checkbox"/>
+<span class="slider round"></span>
+</label>
+</div>
+<script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
     var coll = document.getElementsByClassName("collapsible");
     var i;
   
@@ -281,5 +227,4 @@
     }
   </script>
 </body>
-
 </html>
