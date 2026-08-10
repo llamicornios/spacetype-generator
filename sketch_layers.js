@@ -32,6 +32,27 @@ let stackCount;
 
 let fontAnimate;
 
+
+// ---- UI helpers: labels para sliders ----
+function labelSlider(slider, txt) {
+  var l = createP(txt);
+  var pos = slider.position();
+  l.position(pos.x, pos.y - 16);
+  l.style('font-family', "'IBM Plex Mono', monospace");
+  l.style('font-size', '10px');
+  l.style('color', '#999999');
+  l.style('margin', '0');
+  l.style('padding', '1px 3px');
+  l.style('line-height', '1');
+  l.style('letter-spacing', '1px');
+  l.style('pointer-events', 'none');
+  l.style('text-transform', 'uppercase');
+  l.style('z-index', '5000');
+  l.style('background', 'rgba(255,255,255,0.75)');
+  l.style('border-radius', '2px');
+  return l;
+}
+
 function preload() {
   fontMenu = loadFont("assets/IBMPlexMono-Regular.otf");
   fontSelect1 = loadFont("assets/WorkSans-Regular.ttf");
@@ -66,23 +87,23 @@ function setup() {
   radio.style("width","20px");
   radio.value(' ');
 
-  stackCountSlider = createSlider(1,40,14);
+  stackCountSlider = createSlider(1,40,14); labelSlider(stackCountSlider, "Stack Count");
   stackCountSlider.position(25,80);
   stackCountSlider.style('width','100px');
 
-  fontSizeSlider = createSlider(50,300,100);
+  fontSizeSlider = createSlider(50,300,100); labelSlider(fontSizeSlider, "Font Size");
   fontSizeSlider.position(25,110);
   fontSizeSlider.style('width','100px');
 
-  innerHSlider = createSlider(-500,1500,100);
+  innerHSlider = createSlider(-500,1500,100); labelSlider(innerHSlider, "Inner H");
   innerHSlider.position(25,140);
   innerHSlider.style("width","100px");
 
-  innerVSlider = createSlider(-500,1500,100);
+  innerVSlider = createSlider(-500,1500,100); labelSlider(innerVSlider, "Inner V");
   innerVSlider.position(25,170);
   innerVSlider.style('width','100px');
 
-  rotateFactorSlider = createSlider(-0.78, 0.78, 0, 0.01);
+  rotateFactorSlider = createSlider(-0.78, 0.78, 0, 0.01); labelSlider(rotateFactorSlider, "Rotate Factor");
   rotateFactorSlider.position(25,200);
   rotateFactorSlider.style('width','100px');
 

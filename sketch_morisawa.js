@@ -54,6 +54,27 @@ var capturer = new CCapture( {
      verbose: true
 } );
 
+
+// ---- UI helpers: labels para sliders ----
+function labelSlider(slider, txt) {
+  var l = createP(txt);
+  var pos = slider.position();
+  l.position(pos.x, pos.y - 16);
+  l.style('font-family', "'IBM Plex Mono', monospace");
+  l.style('font-size', '10px');
+  l.style('color', '#999999');
+  l.style('margin', '0');
+  l.style('padding', '1px 3px');
+  l.style('line-height', '1');
+  l.style('letter-spacing', '1px');
+  l.style('pointer-events', 'none');
+  l.style('text-transform', 'uppercase');
+  l.style('z-index', '5000');
+  l.style('background', 'rgba(255,255,255,0.75)');
+  l.style('border-radius', '2px');
+  return l;
+}
+
 function preload() {
   font = loadFont('assets/IBMPlexMono-Regular.otf');
 }
@@ -70,12 +91,12 @@ function setup() {
 
   inp = select("#textfield");
 
-  rowsSlider = createSlider(1, 60, 7);rowsSlider.position(10, height-55);rowsSlider.style('width', '100px');
-  typeStrokeSlider = createSlider(0, 4, 1, 0.5);typeStrokeSlider.position(10, height-25);typeStrokeSlider.style('width', '100px');
-  trackingSlider = createSlider(0, 500, 60);trackingSlider.position(125, height-55);trackingSlider.style('width', '100px');
-  speedSlider = createSlider(0, 2, 0.3, 0.01);speedSlider.position(125, height-25);speedSlider.style('width', '100px');
-  lineSpaceSlider = createSlider(0, 40, 5);lineSpaceSlider.position(235, height-55);lineSpaceSlider.style('width', '100px');
-  paddingSlider = createSlider(0, windowWidth/2, 40);paddingSlider.position(235, height-25);paddingSlider.style('width', '100px');
+  rowsSlider = createSlider(1, 60, 7); labelSlider(rowsSlider, "Rows");rowsSlider.position(10, height-55);rowsSlider.style('width', '100px');
+  typeStrokeSlider = createSlider(0, 4, 1, 0.5); labelSlider(typeStrokeSlider, "Borde texto");typeStrokeSlider.position(10, height-25);typeStrokeSlider.style('width', '100px');
+  trackingSlider = createSlider(0, 500, 60); labelSlider(trackingSlider, "Tracking");trackingSlider.position(125, height-55);trackingSlider.style('width', '100px');
+  speedSlider = createSlider(0, 2, 0.3, 0.01); labelSlider(speedSlider, "Speed");speedSlider.position(125, height-25);speedSlider.style('width', '100px');
+  lineSpaceSlider = createSlider(0, 40, 5); labelSlider(lineSpaceSlider, "Line Space");lineSpaceSlider.position(235, height-55);lineSpaceSlider.style('width', '100px');
+  paddingSlider = createSlider(0, windowWidth/2, 40); labelSlider(paddingSlider, "Padding");paddingSlider.position(235, height-25);paddingSlider.style('width', '100px');
 
   mirrorCheck = createCheckbox('', true);mirrorCheck.position(350, height-58);
   mirrorSpeedCheck = createCheckbox('', false);mirrorSpeedCheck.position(350, height-42);

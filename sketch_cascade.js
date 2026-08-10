@@ -51,6 +51,27 @@ var capturer = new CCapture( {
     verbose: true
 } );
 
+
+// ---- UI helpers: labels para sliders ----
+function labelSlider(slider, txt) {
+  var l = createP(txt);
+  var pos = slider.position();
+  l.position(pos.x, pos.y - 16);
+  l.style('font-family', "'IBM Plex Mono', monospace");
+  l.style('font-size', '10px');
+  l.style('color', '#999999');
+  l.style('margin', '0');
+  l.style('padding', '1px 3px');
+  l.style('line-height', '1');
+  l.style('letter-spacing', '1px');
+  l.style('pointer-events', 'none');
+  l.style('text-transform', 'uppercase');
+  l.style('z-index', '5000');
+  l.style('background', 'rgba(255,255,255,0.75)');
+  l.style('border-radius', '2px');
+  return l;
+}
+
 function preload() {
   font = loadFont('assets/IBMPlexMono-Regular.otf');
 }
@@ -66,17 +87,17 @@ function setup() {
 
   inp = select("#textfield");
 
-  typeXSlider = createSlider(0, 100, 20); typeXSlider.position(25, 20);typeXSlider.style('width', '100px');
-  typeStrokeSlider = createSlider(0, 5, 2, 0.5);typeStrokeSlider.position(25, 50);typeStrokeSlider.style('width', '100px');
-  trackingSlider = createSlider(0, 100, 10);trackingSlider.position(25, 80);trackingSlider.style('width', '100px');
-  lineSpaceSlider = createSlider(0, 100, 20);lineSpaceSlider.position(25, 110);lineSpaceSlider.style('width', '100px');
-  rowSlider = createSlider(0, 100, 14, 2);rowSlider.position(25, 160);rowSlider.style('width', '100px');
+  typeXSlider = createSlider(0, 100, 20); labelSlider(typeXSlider, "Texto X"); typeXSlider.position(25, 20);typeXSlider.style('width', '100px');
+  typeStrokeSlider = createSlider(0, 5, 2, 0.5); labelSlider(typeStrokeSlider, "Borde texto");typeStrokeSlider.position(25, 50);typeStrokeSlider.style('width', '100px');
+  trackingSlider = createSlider(0, 100, 10); labelSlider(trackingSlider, "Tracking");trackingSlider.position(25, 80);trackingSlider.style('width', '100px');
+  lineSpaceSlider = createSlider(0, 100, 20); labelSlider(lineSpaceSlider, "Line Space");lineSpaceSlider.position(25, 110);lineSpaceSlider.style('width', '100px');
+  rowSlider = createSlider(0, 100, 14, 2); labelSlider(rowSlider, "Row");rowSlider.position(25, 160);rowSlider.style('width', '100px');
 
   mirrorCheck = createCheckbox('', false);mirrorCheck.position(25, 178);
 
-  waveLengthSlider = createSlider(0, 1, 0.13, 0.01); waveLengthSlider.position(25, 220); waveLengthSlider.style('width', '100px');
-  waveSpeedSlider = createSlider(0, 10, 1); waveSpeedSlider.position(25, 250); waveSpeedSlider.style('width', '100px');
-  slopeSlider = createSlider(0, PI, 1, 0.1); slopeSlider.position(25, 280); slopeSlider.style('width', '100px');
+  waveLengthSlider = createSlider(0, 1, 0.13, 0.01); labelSlider(waveLengthSlider, "Wave Length"); waveLengthSlider.position(25, 220); waveLengthSlider.style('width', '100px');
+  waveSpeedSlider = createSlider(0, 10, 1); labelSlider(waveSpeedSlider, "Wave Speed"); waveSpeedSlider.position(25, 250); waveSpeedSlider.style('width', '100px');
+  slopeSlider = createSlider(0, PI, 1, 0.1); labelSlider(slopeSlider, "Slope"); slopeSlider.position(25, 280); slopeSlider.style('width', '100px');
 
   saveLoopSet = createButton('Save Loop'); saveLoopSet.position(140,10); saveLoopSet.mousePressed(saveLoop);
   prideButton = createButton('PRIDE!'); prideButton.position(140,35); prideButton.mousePressed(pride);

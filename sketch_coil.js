@@ -46,6 +46,27 @@ var inpNumber = 4;
 
 var presetStacks;
 
+
+// ---- UI helpers: labels para sliders ----
+function labelSlider(slider, txt) {
+  var l = createP(txt);
+  var pos = slider.position();
+  l.position(pos.x, pos.y - 16);
+  l.style('font-family', "'IBM Plex Mono', monospace");
+  l.style('font-size', '10px');
+  l.style('color', '#999999');
+  l.style('margin', '0');
+  l.style('padding', '1px 3px');
+  l.style('line-height', '1');
+  l.style('letter-spacing', '1px');
+  l.style('pointer-events', 'none');
+  l.style('text-transform', 'uppercase');
+  l.style('z-index', '5000');
+  l.style('background', 'rgba(255,255,255,0.75)');
+  l.style('border-radius', '2px');
+  return l;
+}
+
 function preload() {
   font = loadFont('assets/IBMPlexMono-Regular.otf');
 }
@@ -58,27 +79,27 @@ function setup() {
 
   inp = select("#textfield");
 
-  typeXSlider = createSlider(0, 100, 7); typeXSlider.position(25, 20);typeXSlider.style('width', '100px');
-  typeYSlider = createSlider(0, 100, 20);typeYSlider.position(25, 50);typeYSlider.style('width', '100px');
-  typeStrokeSlider = createSlider(0, 5, 2, 0.5);typeStrokeSlider.position(25, 80);typeStrokeSlider.style('width', '100px');
+  typeXSlider = createSlider(0, 100, 7); labelSlider(typeXSlider, "Texto X"); typeXSlider.position(25, 20);typeXSlider.style('width', '100px');
+  typeYSlider = createSlider(0, 100, 20); labelSlider(typeYSlider, "Texto Y");typeYSlider.position(25, 50);typeYSlider.style('width', '100px');
+  typeStrokeSlider = createSlider(0, 5, 2, 0.5); labelSlider(typeStrokeSlider, "Borde texto");typeStrokeSlider.position(25, 80);typeStrokeSlider.style('width', '100px');
 
-  ribbonCountSlider = createSlider(0, 400, 40);ribbonCountSlider.position(25, 130);ribbonCountSlider.style('width', '100px');
-  ribbonSizeSlider = createSlider(-10, 50, 10);ribbonSizeSlider.position(25, 160);ribbonSizeSlider.style('width', '100px');
+  ribbonCountSlider = createSlider(0, 400, 40); labelSlider(ribbonCountSlider, "Ribbon Count");ribbonCountSlider.position(25, 130);ribbonCountSlider.style('width', '100px');
+  ribbonSizeSlider = createSlider(-10, 50, 10); labelSlider(ribbonSizeSlider, "Ribbon Size");ribbonSizeSlider.position(25, 160);ribbonSizeSlider.style('width', '100px');
 
   radioEnd = createRadio();
   radioEnd.position(35,195); radioEnd.style('width','30px');
   radioEnd.option(' ', 1); radioEnd.option(' ', 2);
   radioEnd.value('1').checked = true;
   
-  radiusSlider = createSlider(0, 25, 3, 0.5); radiusSlider.position(25, 260);radiusSlider.style('width', '100px');
-  trackerSlider = createSlider(0, 50, 10); trackerSlider.position(25, 290);trackerSlider.style('width', '100px');
-  spiralStartSlider = createSlider(0, 200, 50); spiralStartSlider.position(25, 320);spiralStartSlider.style('width', '100px');
-  spinSlider = createSlider(0, 10, 1); spinSlider.position(25, 350);spinSlider.style('width', '100px');
+  radiusSlider = createSlider(0, 25, 3, 0.5); labelSlider(radiusSlider, "Radius"); radiusSlider.position(25, 260);radiusSlider.style('width', '100px');
+  trackerSlider = createSlider(0, 50, 10); labelSlider(trackerSlider, "Tracker"); trackerSlider.position(25, 290);trackerSlider.style('width', '100px');
+  spiralStartSlider = createSlider(0, 200, 50); labelSlider(spiralStartSlider, "Spiral Start"); spiralStartSlider.position(25, 320);spiralStartSlider.style('width', '100px');
+  spinSlider = createSlider(0, 10, 1); labelSlider(spinSlider, "Spin"); spinSlider.position(25, 350);spinSlider.style('width', '100px');
   
-  waveSizeSlider = createSlider(0, 200, 0); waveSizeSlider.position(25, 410);waveSizeSlider.style('width', '100px');
-  waveCountSlider = createSlider(0, 12, 1); waveCountSlider.position(25, 440); waveCountSlider.style('width', '100px');
-  waveSpeedSlider = createSlider(0, 10, 1); waveSpeedSlider.position(25, 470); waveSpeedSlider.style('width', '100px');
-  slopeSlider = createSlider(0, PI, 1, 0.1); slopeSlider.position(25, 500); slopeSlider.style('width', '100px');
+  waveSizeSlider = createSlider(0, 200, 0); labelSlider(waveSizeSlider, "Wave Size"); waveSizeSlider.position(25, 410);waveSizeSlider.style('width', '100px');
+  waveCountSlider = createSlider(0, 12, 1); labelSlider(waveCountSlider, "Wave Count"); waveCountSlider.position(25, 440); waveCountSlider.style('width', '100px');
+  waveSpeedSlider = createSlider(0, 10, 1); labelSlider(waveSpeedSlider, "Wave Speed"); waveSpeedSlider.position(25, 470); waveSpeedSlider.style('width', '100px');
+  slopeSlider = createSlider(0, PI, 1, 0.1); labelSlider(slopeSlider, "Slope"); slopeSlider.position(25, 500); slopeSlider.style('width', '100px');
 
   //exportButton = createButton('Save Loop'); exportButton.position(140,20); exportButton.mousePressed(saveLoop);
   prideButton = createButton('PRIDE!'); prideButton.position(140,45); prideButton.mousePressed(pride);

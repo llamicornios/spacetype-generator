@@ -55,6 +55,27 @@ var inpNumber = 1;
 // PRESETS
 var presetSimple, presetJellyfish, presetCrown, presetComplex, presetWeave, presetZebra, presetHoops;
 
+
+// ---- UI helpers: labels para sliders ----
+function labelSlider(slider, txt) {
+  var l = createP(txt);
+  var pos = slider.position();
+  l.position(pos.x, pos.y - 16);
+  l.style('font-family', "'IBM Plex Mono', monospace");
+  l.style('font-size', '10px');
+  l.style('color', '#999999');
+  l.style('margin', '0');
+  l.style('padding', '1px 3px');
+  l.style('line-height', '1');
+  l.style('letter-spacing', '1px');
+  l.style('pointer-events', 'none');
+  l.style('text-transform', 'uppercase');
+  l.style('z-index', '5000');
+  l.style('background', 'rgba(255,255,255,0.75)');
+  l.style('border-radius', '2px');
+  return l;
+}
+
 function preload() {
  font = loadFont('assets/IBMPlexMono-Regular.otf');
 }
@@ -68,31 +89,31 @@ function setup(){
   
   inp = select("#textfield");
   
-  rSlider = createSlider(0,1000,250); rSlider.position(15,17); rSlider.style('width','100px');
-  stackNumSlider = createSlider(1,30,1); stackNumSlider.position(15,47); stackNumSlider.style('width','100px');
-  rRotateSlider = createSlider(-100,100,-5); rRotateSlider.position(15,77); rRotateSlider.style('width','100px');  
-  rOffsetSlider = createSlider(0,PI/2,0,0.01); rOffsetSlider.position(15,107); rOffsetSlider.style('width','100px');    
+  rSlider = createSlider(0,1000,250); labelSlider(rSlider, "Radio"); rSlider.position(15,17); rSlider.style('width','100px');
+  stackNumSlider = createSlider(1,30,1); labelSlider(stackNumSlider, "Capas"); stackNumSlider.position(15,47); stackNumSlider.style('width','100px');
+  rRotateSlider = createSlider(-100,100,-5); labelSlider(rRotateSlider, "Rotacion"); rRotateSlider.position(15,77); rRotateSlider.style('width','100px');  
+  rOffsetSlider = createSlider(0,PI/2,0,0.01); labelSlider(rOffsetSlider, "Offset"); rOffsetSlider.position(15,107); rOffsetSlider.style('width','100px');    
 
-  rWaveCountSlider = createSlider(0,10,2); rWaveCountSlider.position(15,147); rWaveCountSlider.style('width','100px');
-  rWaveSpeedSlider = createSlider(0,100,0); rWaveSpeedSlider.position(15,177); rWaveSpeedSlider.style('width','100px');
-  rWaveSlider = createSlider(0,200,0); rWaveSlider.position(15,207); rWaveSlider.style('width','100px');
-  rLongSlider = createSlider(0,80,0); rLongSlider.position(15,237); rLongSlider.style('width','100px');
-  rZaxisSlider = createSlider(0,100,0); rZaxisSlider.position(15,267); rZaxisSlider.style('width','100px');
-  strecherXslider = createSlider(0,80,0); strecherXslider.position(15,297); strecherXslider.style('width','100px');
-  strecherYslider = createSlider(0,100,0); strecherYslider.position(15,327); strecherYslider.style('width','100px');
+  rWaveCountSlider = createSlider(0,10,2); labelSlider(rWaveCountSlider, "Ondas"); rWaveCountSlider.position(15,147); rWaveCountSlider.style('width','100px');
+  rWaveSpeedSlider = createSlider(0,100,0); labelSlider(rWaveSpeedSlider, "Vel. onda"); rWaveSpeedSlider.position(15,177); rWaveSpeedSlider.style('width','100px');
+  rWaveSlider = createSlider(0,200,0); labelSlider(rWaveSlider, "Amplitud"); rWaveSlider.position(15,207); rWaveSlider.style('width','100px');
+  rLongSlider = createSlider(0,80,0); labelSlider(rLongSlider, "Longitud"); rLongSlider.position(15,237); rLongSlider.style('width','100px');
+  rZaxisSlider = createSlider(0,100,0); labelSlider(rZaxisSlider, "Prof. Z"); rZaxisSlider.position(15,267); rZaxisSlider.style('width','100px');
+  strecherXslider = createSlider(0,80,0); labelSlider(strecherXslider, "Estirar X"); strecherXslider.position(15,297); strecherXslider.style('width','100px');
+  strecherYslider = createSlider(0,100,0); labelSlider(strecherYslider, "Estirar Y"); strecherYslider.position(15,327); strecherYslider.style('width','100px');
   
-  typeXSlider = createSlider(0,100,20); typeXSlider.position(15,367); typeXSlider.style('width','100px');
-	typeYSlider = createSlider(0,100,40); typeYSlider.position(15,397); typeYSlider.style('width','100px');
-	typeStrokeSlider = createSlider(0,10,2,0.1); typeStrokeSlider.position(15,427); typeStrokeSlider.style('width','100px');
+  typeXSlider = createSlider(0,100,20); labelSlider(typeXSlider, "Texto X"); typeXSlider.position(15,367); typeXSlider.style('width','100px');
+	typeYSlider = createSlider(0,100,40); labelSlider(typeYSlider, "Texto Y"); typeYSlider.position(15,397); typeYSlider.style('width','100px');
+	typeStrokeSlider = createSlider(0,10,2,0.1); labelSlider(typeStrokeSlider, "Borde texto"); typeStrokeSlider.position(15,427); typeStrokeSlider.style('width','100px');
 
-  xRotTweakSlider = createSlider(0,45,0); xRotTweakSlider.position(15,517); xRotTweakSlider.style('width','100px');
-  yRotTweakSlider = createSlider(0,45,0); yRotTweakSlider.position(15,547); yRotTweakSlider.style('width','100px');
-  zRotTweakSlider = createSlider(0,45,0); zRotTweakSlider.position(15,577); zRotTweakSlider.style('width','100px');
+  xRotTweakSlider = createSlider(0,45,0); labelSlider(xRotTweakSlider, "Rot X"); xRotTweakSlider.position(15,517); xRotTweakSlider.style('width','100px');
+  yRotTweakSlider = createSlider(0,45,0); labelSlider(yRotTweakSlider, "Rot Y"); yRotTweakSlider.position(15,547); yRotTweakSlider.style('width','100px');
+  zRotTweakSlider = createSlider(0,45,0); labelSlider(zRotTweakSlider, "Rot Z"); zRotTweakSlider.position(15,577); zRotTweakSlider.style('width','100px');
   
-  xRotCameraSlider = createSlider(-180,180,15); xRotCameraSlider.position(-20,height-107); xRotCameraSlider.style('width','100px'); xRotCameraSlider.style('rotate',270);
-  yRotCameraSlider = createSlider(-180,180,0); yRotCameraSlider.position(20,height-107); yRotCameraSlider.style('width','100px'); yRotCameraSlider.style('rotate',270);
-  zRotCameraSlider = createSlider(-180,180,0); zRotCameraSlider.position(60,height-107); zRotCameraSlider.style('width','100px'); zRotCameraSlider.style('rotate',270);
-	zoomCameraSlider = createSlider(-500,500,0); zoomCameraSlider.position(15,height-20); zoomCameraSlider.style('width','100px');
+  xRotCameraSlider = createSlider(-180,180,15); labelSlider(xRotCameraSlider, "Cam X"); xRotCameraSlider.position(-20,height-107); xRotCameraSlider.style('width','100px'); xRotCameraSlider.style('rotate',270);
+  yRotCameraSlider = createSlider(-180,180,0); labelSlider(yRotCameraSlider, "Cam Y"); yRotCameraSlider.position(20,height-107); yRotCameraSlider.style('width','100px'); yRotCameraSlider.style('rotate',270);
+  zRotCameraSlider = createSlider(-180,180,0); labelSlider(zRotCameraSlider, "Cam Z"); zRotCameraSlider.position(60,height-107); zRotCameraSlider.style('width','100px'); zRotCameraSlider.style('rotate',270);
+	zoomCameraSlider = createSlider(-500,500,0); labelSlider(zoomCameraSlider, "Zoom Camera"); zoomCameraSlider.position(15,height-20); zoomCameraSlider.style('width','100px');
 
 //  exportButton = createButton('Save Loop'); exportButton.position(140,10); exportButton.mousePressed(saveLoop);
   prideButton = createButton('PRIDE!'); prideButton.position(140,35); prideButton.mousePressed(pride);

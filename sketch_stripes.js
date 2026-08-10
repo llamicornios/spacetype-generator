@@ -59,6 +59,27 @@ var capturer = new CCapture( {
     verbose: true
 } );
 
+
+// ---- UI helpers: labels para sliders ----
+function labelSlider(slider, txt) {
+  var l = createP(txt);
+  var pos = slider.position();
+  l.position(pos.x, pos.y - 16);
+  l.style('font-family', "'IBM Plex Mono', monospace");
+  l.style('font-size', '10px');
+  l.style('color', '#999999');
+  l.style('margin', '0');
+  l.style('padding', '1px 3px');
+  l.style('line-height', '1');
+  l.style('letter-spacing', '1px');
+  l.style('pointer-events', 'none');
+  l.style('text-transform', 'uppercase');
+  l.style('z-index', '5000');
+  l.style('background', 'rgba(255,255,255,0.75)');
+  l.style('border-radius', '2px');
+  return l;
+}
+
 function preload() {
   font = loadFont('assets/IBMPlexMono-Regular.otf');
 }
@@ -75,21 +96,21 @@ function setup() {
 
   inp = select("#textfield");
 
-  typeXSlider = createSlider(0, 100, 20); typeXSlider.position(25, 20);typeXSlider.style('width', '100px');
-  typeYSlider = createSlider(0, 100, 40);typeYSlider.position(25, 50);typeYSlider.style('width', '100px');
-  typeStrokeSlider = createSlider(0, 5, 2);typeStrokeSlider.position(25, 80);typeStrokeSlider.style('width', '100px');
-  trackingSlider = createSlider(0, 40, 10);trackingSlider.position(25, 110);trackingSlider.style('width', '100px');
+  typeXSlider = createSlider(0, 100, 20); labelSlider(typeXSlider, "Texto X"); typeXSlider.position(25, 20);typeXSlider.style('width', '100px');
+  typeYSlider = createSlider(0, 100, 40); labelSlider(typeYSlider, "Texto Y");typeYSlider.position(25, 50);typeYSlider.style('width', '100px');
+  typeStrokeSlider = createSlider(0, 5, 2); labelSlider(typeStrokeSlider, "Borde texto");typeStrokeSlider.position(25, 80);typeStrokeSlider.style('width', '100px');
+  trackingSlider = createSlider(0, 40, 10); labelSlider(trackingSlider, "Tracking");trackingSlider.position(25, 110);trackingSlider.style('width', '100px');
 
-  ribbonCountSlider = createSlider(0, 40, 9);ribbonCountSlider.position(25, 170);ribbonCountSlider.style('width', '100px');
-  ribbonSpaceXSlider = createSlider(-60, 60, -17);ribbonSpaceXSlider.position(25, 200);ribbonSpaceXSlider.style('width', '100px');
-  ribbonSpaceYSlider = createSlider(-60, 60, -35);ribbonSpaceYSlider.position(25, 230);ribbonSpaceYSlider.style('width', '100px');
-  ribbonSizeSlider = createSlider(-20, 100, 35);ribbonSizeSlider.position(25, 260);ribbonSizeSlider.style('width', '100px');
-  ribbonOffsetSlider = createSlider(0, PI, 0.2, 0.1);ribbonOffsetSlider.position(25, 290);ribbonOffsetSlider.style('width', '100px');
+  ribbonCountSlider = createSlider(0, 40, 9); labelSlider(ribbonCountSlider, "Ribbon Count");ribbonCountSlider.position(25, 170);ribbonCountSlider.style('width', '100px');
+  ribbonSpaceXSlider = createSlider(-60, 60, -17); labelSlider(ribbonSpaceXSlider, "Ribbon Space X");ribbonSpaceXSlider.position(25, 200);ribbonSpaceXSlider.style('width', '100px');
+  ribbonSpaceYSlider = createSlider(-60, 60, -35); labelSlider(ribbonSpaceYSlider, "Ribbon Space Y");ribbonSpaceYSlider.position(25, 230);ribbonSpaceYSlider.style('width', '100px');
+  ribbonSizeSlider = createSlider(-20, 100, 35); labelSlider(ribbonSizeSlider, "Ribbon Size");ribbonSizeSlider.position(25, 260);ribbonSizeSlider.style('width', '100px');
+  ribbonOffsetSlider = createSlider(0, PI, 0.2, 0.1); labelSlider(ribbonOffsetSlider, "Ribbon Offset");ribbonOffsetSlider.position(25, 290);ribbonOffsetSlider.style('width', '100px');
   
-  yWaveSlider = createSlider(0, 100, 96);yWaveSlider.position(25, 350);yWaveSlider.style('width', '100px');
-  speedSlider = createSlider(0, 0.3, 0.01, 0.01);speedSlider.position(25, 380);speedSlider.style('width', '100px');
-  offsetSlider = createSlider(0, PI, .26, 0.01);offsetSlider.position(25, 410);offsetSlider.style('width', '100px');
-  slopeSlider = createSlider(0, 4, 1, 0.1);slopeSlider.position(25, 440);slopeSlider.style('width', '100px');
+  yWaveSlider = createSlider(0, 100, 96); labelSlider(yWaveSlider, "Y Wave");yWaveSlider.position(25, 350);yWaveSlider.style('width', '100px');
+  speedSlider = createSlider(0, 0.3, 0.01, 0.01); labelSlider(speedSlider, "Speed");speedSlider.position(25, 380);speedSlider.style('width', '100px');
+  offsetSlider = createSlider(0, PI, .26, 0.01); labelSlider(offsetSlider, "Offset");offsetSlider.position(25, 410);offsetSlider.style('width', '100px');
+  slopeSlider = createSlider(0, 4, 1, 0.1); labelSlider(slopeSlider, "Slope");slopeSlider.position(25, 440);slopeSlider.style('width', '100px');
 
   saveLoopSet = createButton('Save Loop'); saveLoopSet.position(140, 10); saveLoopSet.mousePressed(saveLoop);
   prideButton = createButton('PRIDE!'); prideButton.position(140,35); prideButton.mousePressed(pride);

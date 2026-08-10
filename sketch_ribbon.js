@@ -47,6 +47,27 @@ var capturer = new CCapture( {
     verbose: true
 } );
 
+
+// ---- UI helpers: labels para sliders ----
+function labelSlider(slider, txt) {
+  var l = createP(txt);
+  var pos = slider.position();
+  l.position(pos.x, pos.y - 16);
+  l.style('font-family', "'IBM Plex Mono', monospace");
+  l.style('font-size', '10px');
+  l.style('color', '#999999');
+  l.style('margin', '0');
+  l.style('padding', '1px 3px');
+  l.style('line-height', '1');
+  l.style('letter-spacing', '1px');
+  l.style('pointer-events', 'none');
+  l.style('text-transform', 'uppercase');
+  l.style('z-index', '5000');
+  l.style('background', 'rgba(255,255,255,0.75)');
+  l.style('border-radius', '2px');
+  return l;
+}
+
 function preload() {
   font = loadFont('assets/IBMPlexMono-Regular.otf');
 }
@@ -62,26 +83,26 @@ function setup() {
 
   inp = select("#textfield");
 
-  segmentSpaceSlider = createSlider(0,100,15);segmentSpaceSlider.position(25, 30);segmentSpaceSlider.style('width', '100px');  
-  segmentCountSlider = createSlider(0,50,15);segmentCountSlider.position(25, 60);segmentCountSlider.style('width', '100px');  
-  typeHeightSlider = createSlider(0,100,30);typeHeightSlider.position(25, 90);typeHeightSlider.style('width', '100px');   
-  trackingSlider = createSlider(0,100,30);trackingSlider.position(25, 120);trackingSlider.style('width', '100px');   
-  typeStrokeSlider = createSlider(0,2,1,0.1);typeStrokeSlider.position(25, 150);typeStrokeSlider.style('width', '100px');
+  segmentSpaceSlider = createSlider(0,100,15); labelSlider(segmentSpaceSlider, "Segment Space");segmentSpaceSlider.position(25, 30);segmentSpaceSlider.style('width', '100px');  
+  segmentCountSlider = createSlider(0,50,15); labelSlider(segmentCountSlider, "Segment Count");segmentCountSlider.position(25, 60);segmentCountSlider.style('width', '100px');  
+  typeHeightSlider = createSlider(0,100,30); labelSlider(typeHeightSlider, "Type Height");typeHeightSlider.position(25, 90);typeHeightSlider.style('width', '100px');   
+  trackingSlider = createSlider(0,100,30); labelSlider(trackingSlider, "Tracking");trackingSlider.position(25, 120);trackingSlider.style('width', '100px');   
+  typeStrokeSlider = createSlider(0,2,1,0.1); labelSlider(typeStrokeSlider, "Borde texto");typeStrokeSlider.position(25, 150);typeStrokeSlider.style('width', '100px');
 
-  speedSlider = createSlider(0,1,0.1,0.01);speedSlider.position(25, 210);speedSlider.style('width', '100px');
+  speedSlider = createSlider(0,1,0.1,0.01); labelSlider(speedSlider, "Speed");speedSlider.position(25, 210);speedSlider.style('width', '100px');
   
-  depthSlider = createSlider(0,200,30);depthSlider.position(25, 270);depthSlider.style('width', '100px');
-  middleStretchSlider = createSlider(0,6,0.5,0.1);middleStretchSlider.position(25, 300);middleStretchSlider.style('width', '100px');
-  countSlider = createSlider(0,10,1);countSlider.position(25, 330);countSlider.style('width', '100px');
-  zSpaceSlider = createSlider(1, 3, 1, 0.01);zSpaceSlider.position(25, 360);zSpaceSlider.style('width', '100px');
-  xSpaceSlider = createSlider(0, 2, 0,0.01);xSpaceSlider.position(25, 390);xSpaceSlider.style('width', '100px');
+  depthSlider = createSlider(0,200,30); labelSlider(depthSlider, "Depth");depthSlider.position(25, 270);depthSlider.style('width', '100px');
+  middleStretchSlider = createSlider(0,6,0.5,0.1); labelSlider(middleStretchSlider, "Middle Stretch");middleStretchSlider.position(25, 300);middleStretchSlider.style('width', '100px');
+  countSlider = createSlider(0,10,1); labelSlider(countSlider, "Count");countSlider.position(25, 330);countSlider.style('width', '100px');
+  zSpaceSlider = createSlider(1, 3, 1, 0.01); labelSlider(zSpaceSlider, "Z Space");zSpaceSlider.position(25, 360);zSpaceSlider.style('width', '100px');
+  xSpaceSlider = createSlider(0, 2, 0,0.01); labelSlider(xSpaceSlider, "X Space");xSpaceSlider.position(25, 390);xSpaceSlider.style('width', '100px');
   altCheck = createCheckbox('', false);altCheck.position(50, 405);
   
-  scalerSlider = createSlider(0, 3, 1.6, 0.01);scalerSlider.position(25, 440);scalerSlider.style('width', '100px');
+  scalerSlider = createSlider(0, 3, 1.6, 0.01); labelSlider(scalerSlider, "Scaler");scalerSlider.position(25, 440);scalerSlider.style('width', '100px');
   
-  rotXslider = createSlider(-3.14, 3.14, -1.79, 0.01);rotXslider.position(25, height-170);rotXslider.style('width', '100px');
-  rotYslider = createSlider(-3.14, 3.14, 0, 0.01);rotYslider.position(25, height-140);rotYslider.style('width', '100px');
-  rotZslider = createSlider(-3.14, 3.14, -0.4, 0.01);rotZslider.position(25, height-110);rotZslider.style('width', '100px');
+  rotXslider = createSlider(-3.14, 3.14, -1.79, 0.01); labelSlider(rotXslider, "Rot X");rotXslider.position(25, height-170);rotXslider.style('width', '100px');
+  rotYslider = createSlider(-3.14, 3.14, 0, 0.01); labelSlider(rotYslider, "Rot Y");rotYslider.position(25, height-140);rotYslider.style('width', '100px');
+  rotZslider = createSlider(-3.14, 3.14, -0.4, 0.01); labelSlider(rotZslider, "Rot Z");rotZslider.position(25, height-110);rotZslider.style('width', '100px');
   
   inp0check = createCheckbox('', false);inp0check.position(150, 57);
   gradientCheck = createCheckbox('', true);gradientCheck.position(150, 77);
