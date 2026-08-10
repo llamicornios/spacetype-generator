@@ -60,10 +60,14 @@
     hint.textContent = 'Google Fonts · libres para usar';
     var btn = document.createElement('button');
     btn.textContent = 'Aplicar';
-    btn.addEventListener('click', function () {
+    function apply() {
       try { localStorage.setItem('stg_font', sel.value); } catch (e) {}
+      btn.textContent = 'Aplicando…';
       location.reload();
-    });
+    }
+    btn.addEventListener('click', apply);
+    // Aplicación en vivo: al elegir se aplica y recarga al instante
+    sel.addEventListener('change', apply);
     panel.appendChild(label);
     panel.appendChild(sel);
     panel.appendChild(btn);
