@@ -15,7 +15,63 @@
 </head>
 <body>
 <!-- FLOATING PANEL -->
-
+<div id="panel">
+<div id="panel-header">
+<div class="panel-header-row">
+<span class="panel-title">STG v.boxSquad</span>
+<div class="panel-minimize" id="minimize-btn" title="Minimize">
+<svg fill="none" height="2" viewbox="0 0 10 2" width="10">
+<rect fill="rgba(255,255,255,0.5)" height="2" rx="1" width="10"></rect>
+</svg>
+</div>
+</div>
+<div class="panel-byline">a generator from  · <span id="fps">--</span> fps</div>
+</div>
+<div id="panel-body">
+<div class="section-content" style="padding-top: 8px;">
+<div class="grid-steppers">
+<div class="stepper-col">
+<span class="stepper-label">Columns</span>
+<div class="stepper">
+<button class="stepper-btn" id="cols-minus">−</button>
+<span class="stepper-val" id="cols-val">--</span>
+<button class="stepper-btn" id="cols-plus">+</button>
+</div>
+</div>
+<div class="stepper-col">
+<span class="stepper-label">Rows</span>
+<div class="stepper">
+<button class="stepper-btn" id="rows-minus">−</button>
+<span class="stepper-val" id="rows-val">--</span>
+<button class="stepper-btn" id="rows-plus">+</button>
+</div>
+</div>
+</div>
+<div class="ctrl-grid">
+<div class="ctrl">
+<span class="ctrl-label">Twerk</span>
+<input id="twerk-toggle" type="checkbox"/>
+</div>
+<div class="ctrl">
+<span class="ctrl-label">B/W</span>
+<input id="bw-toggle" type="checkbox"/>
+</div>
+<div class="ctrl">
+<span class="ctrl-label">Checker</span>
+<input id="checker-toggle" type="checkbox"/>
+</div>
+<div class="ctrl">
+<span class="ctrl-label">Debug</span>
+<input id="debug-toggle" type="checkbox"/>
+</div>
+</div>
+<div class="btn-row">
+<button class="action-btn" id="reset-btn">Reset Grid</button>
+<button class="action-btn" id="reroll-btn">Reroll</button>
+</div>
+</div>
+</div>
+</div>
 <script>
   function updateFill(sl) {
     const min = parseFloat(sl.min), max = parseFloat(sl.max), val = parseFloat(sl.value);

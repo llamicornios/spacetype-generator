@@ -1,8 +1,6 @@
 <html lang="en">
 <head>
-
-
-
+<!-- Global site tag (gtag.js) - Google Analytics -->
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>STG</title>
@@ -25,7 +23,49 @@
 <style> body {padding: 0; margin: 0;} canvas {vertical-align: top;} </style>
 </head>
 <body>
-
+<div id="widget">
+<div class="dropdown">
+<button class="dropbtn">Select...</button>
+<div class="dropdown-content">
+<a href="index.html">CYLINDER</a>
+<a href="field.html">FIELD</a>
+<a href="stripes.html">STRIPES</a>
+<a href="coil.html">COIL</a>
+<a href="flag.html">FLAG</a>
+<a href="morisawa.html">MORISAWA</a>
+<a href="cascade.html">CASCADE</a>
+<a href="ribbon.html">RIBBON</a>
+<a href="layers.html">LAYERS</a>
+<a href="danger.html">DANGER</a>
+<a href="string.html">STRING</a>
+<a href="badge.html">BADGE</a>
+<a href="clutter.html">CLUTTER</a>
+<a href="construct.html">CONSTRUCT</a>
+<a href="snap.html">SNAP</a>
+<a href="flash.html">FLASH</a>
+<a href="pow.html">POW</a>
+<a href="crash.html">CRASH</a>
+<a href="crashclock.html">CRASH CLOCK</a>
+<a href="vessel.html">VESSEL</a>
+<a href="shine.html">SHINE</a>
+<a href="boost.html">BOOST</a>
+<a href="boxsquad.html">BoxSquad</a>
+</div>
+</div>
+<div class="sec">
+<textarea id="textArea" oninput="setText()" rows="4">
+no
+place
+for
+space
+  </textarea>
+<input id="pgSize" max="300" min="1" oninput="setPGsize(this.value)" type="range" value="150"/>
+<div class="butts">
+<input id="newPalette" onclick="newPalette()" type="button" value="New Palette"/>
+<input id="clearAll" onclick="clearAll()" type="button" value="Clear"/>
+</div>
+</div>
+</div>
 <div>
 <label class="switch">
 <input checked="" oninput="hideWidget()" type="checkbox"/>
