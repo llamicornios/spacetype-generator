@@ -26,6 +26,21 @@
   opacity: 0.85;
   margin-bottom: 2px;
 }
+#dlPanel .dl-drag {
+  cursor: grab;
+  user-select: none;
+  text-align: center;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.5);
+  border: 1px dashed rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  padding: 2px 0;
+  margin-bottom: 4px;
+  font-size: 10px;
+  line-height: 1.2;
+}
+#dlPanel .dl-drag:hover { color: #fff; border-color: rgba(255, 255, 255, 0.6); }
+#dlPanel .dl-drag.dragging { cursor: grabbing; color: #0000ff; border-color: #0000ff; }
 #dlPanel button {
   background: #111;
   color: #fff;

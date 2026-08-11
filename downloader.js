@@ -134,6 +134,91 @@
     if (el) el.textContent = msg;
   }
 
+  /* ---------- Arrastre ---------- */
+  function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
+
+  function makeDraggable(panel) {
+    var handle = document.createElement('div');
+    handle.className = 'dl-drag';
+    handle.textContent = '⋮⋮';
+    handle.title = 'Arrastra para mover';
+    panel.insertBefore(handle, panel.firstChild);
+
+    var dragging = false, startX = 0, startY = 0, origL = 0, origT = 0;
+
+    function onMove(e) {
+      if (!dragging) return;
+      var dx = e.clientX - startX, dy = e.clientY - startY;
+      var l = clamp(origL + dx, 4, window.innerWidth - panel.offsetWidth - 4);
+      var t = clamp(origT + dy, 4, window.innerHeight - panel.offsetHeight - 4);
+      panel.style.left = l + 'px';
+      panel.style.top = t + 'px';
+      panel.style.right = 'auto';
+      panel.style.bottom = 'auto';
+      panel.style.transform = 'none';
+    }
+    function onUp() {
+      if (!dragging) return;
+      dragging = false;
+      handle.classList.remove('dragging');
+      try {
+        localStorage.setItem('dlPanelPos', panel.style.left + ',' + panel.style.top);
+      } catch (e) {}
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup', onUp);
+      document.removeEventListener('touchmove', onMove);
+      document.removeEventListener('touchend', onUp);
+    }
+    handle.addEventListener('mousedown', function (e) {
+      e.preventDefault();
+      // convertir posición visual actual a left/top explícitos (quita transform)
+      var r = panel.getBoundingClientRect();
+      panel.style.left = r.left + 'px';
+      panel.style.top = r.top + 'px';
+      panel.style.right = 'auto';
+      panel.style.bottom = 'auto';
+      panel.style.transform = 'none';
+      dragging = true;
+      startX = e.clientX; startY = e.clientY;
+      origL = r.left; origT = r.top;
+      handle.classList.add('dragging');
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onUp);
+    });
+    handle.addEventListener('touchstart', function (e) {
+      var t = e.touches[0];
+      var r = panel.getBoundingClientRect();
+      panel.style.left = r.left + 'px';
+      panel.style.top = r.top + 'px';
+      panel.style.right = 'auto';
+      panel.style.bottom = 'auto';
+      panel.style.transform = 'none';
+      dragging = true;
+      startX = t.clientX; startY = t.clientY;
+      origL = r.left; origT = r.top;
+      handle.classList.add('dragging');
+      document.addEventListener('touchmove', onMove);
+      document.addEventListener('touchend', onUp);
+      e.preventDefault();
+    }, { passive: false });
+
+    // restaurar posición guardada
+    try {
+      var saved = localStorage.getItem('dlPanelPos');
+      if (saved) {
+        var parts = saved.split(',');
+        var l = parseInt(parts[0], 10), t = parseInt(parts[1], 10);
+        if (!isNaN(l) && !isNaN(t)) {
+          panel.style.left = clamp(l, 4, window.innerWidth - 160) + 'px';
+          panel.style.top = clamp(t, 4, window.innerHeight - 160) + 'px';
+          panel.style.right = 'auto';
+          panel.style.bottom = 'auto';
+          panel.style.transform = 'none';
+        }
+      }
+    } catch (e) {}
+  }
+
   function buildUI() {
     if (document.getElementById('dlPanel')) return;
     var panel = document.createElement('div');
@@ -161,6 +246,7 @@
     panel.appendChild(mkBtn('⬇ WebM (4s)', saveWebM));
     panel.appendChild(status);
     document.body.appendChild(panel);
+    makeDraggable(panel);
   }
 
   if (document.readyState === 'loading') {
