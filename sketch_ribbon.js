@@ -294,7 +294,7 @@ function draw() {
   pop();
 
 fill(textColor);
-  if(gifRecord == false){
+  if(gifRecord == false && window.__STG_CLEAN__ !== true){
       push();
         translate(-width/2,-height/2);
         text("Segment Space " + segmentSpace,25,30);

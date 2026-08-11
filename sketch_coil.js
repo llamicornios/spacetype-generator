@@ -146,6 +146,7 @@ function draw() {
   fill(50,200,250);
   noStroke();
   textSize(9);
+  if (window.__STG_CLEAN__ !== true) {
   text("TYPE: X-Scale " + typeX, 25, 20);
   text("TYPE: Y-Scale " + typeY, 25, 50);
   text("TYPE: Weight " + typeStroke, 25, 80);
@@ -175,6 +176,7 @@ function draw() {
   text("SEGMENT TOGGLES AND COLORS",-250,144);
   text("BKGD COLORS", -325,144);
   pop();
+  }
   
   noFill();
     

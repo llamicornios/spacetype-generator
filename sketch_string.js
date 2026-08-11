@@ -172,6 +172,7 @@ function draw() {
   textAlign(LEFT);
   textSize(10);
   textFont(font0);
+  if (window.__STG_CLEAN__ !== true) {
   text("Strip Height " + stripHeight,15,height-90);
   text("Strip Count " + stripCount,15,height-55);
   text("Outlines",32,height-32);
@@ -191,6 +192,7 @@ function draw() {
 
   textSize(12);
   text("Click & drag to lay down points. Press ENTER to start a new string.",10,height-170);
+  }
 
   let particleCt = particles[squiggleCount-1].length;
   if(draggedIn){

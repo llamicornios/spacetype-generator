@@ -12,6 +12,16 @@
     return document.querySelector('canvas');
   }
 
+  /* Activa/desactiva modo "solo pieza": los sketches saltan su UI cuando
+     window.__STG_CLEAN__ es true, así las capturas salen limpias. */
+  function setClean(on) {
+    try { window.__STG_CLEAN__ = !!on; } catch (e) {}
+  }
+
+  function wait(ms) {
+    return new Promise(function (r) { setTimeout(r, ms); });
+  }
+
   function download(url, filename) {
     var a = document.createElement('a');
     a.href = url;
@@ -25,10 +35,16 @@
   function savePNG() {
     var c = getCanvas();
     if (!c) { alert('Canvas no encontrado'); return; }
-    try {
-      var url = c.toDataURL('image/png');
-      download(url, pageName() + '.png');
-    } catch (e) { alert('No se pudo generar el PNG: ' + e.message); }
+    setClean(true);
+    // esperar 2 frames para que el sketch redibuje sin UI
+    wait(200).then(function () {
+      try {
+        var url = c.toDataURL('image/png');
+        download(url, pageName() + '.png');
+      } catch (e) { alert('No se pudo generar el PNG: ' + e.message); }
+      setClean(false);
+      wait(200);
+    });
   }
 
   /* ---------- GIF (gif.js) ---------- */
@@ -40,6 +56,7 @@
     if (typeof GIF === 'undefined') { alert('gif.js no cargó'); return; }
     gifBusy = true;
     setStatus('Generando GIF… (no cierres la pestaña)');
+    setClean(true);
 
     var SECONDS = 4, FPS = 20, total = SECONDS * FPS, i = 0;
     var gif = new GIF({
@@ -62,11 +79,13 @@
     gif.on('finished', function (blob) {
       gifBusy = false;
       setStatus('');
+      setClean(false);
       download(URL.createObjectURL(blob), pageName() + '.gif');
     });
     gif.on('abort', function () {
       gifBusy = false;
       setStatus('');
+      setClean(false);
       alert('GIF cancelado');
     });
   }
@@ -83,6 +102,7 @@
     }
     recBusy = true;
     setStatus('Grabando 4s…');
+    setClean(true);
 
     var stream = c.captureStream(30);
     var mime = MediaRecorder.isTypeSupported('video/webm;codecs=vp9')
@@ -94,12 +114,14 @@
     rec.onstop = function () {
       recBusy = false;
       setStatus('');
+      setClean(false);
       var blob = new Blob(chunks, { type: 'video/webm' });
       download(URL.createObjectURL(blob), pageName() + '.webm');
     };
     rec.onerror = function () {
       recBusy = false;
       setStatus('');
+      setClean(false);
       alert('Error grabando video');
     };
     rec.start(100);

@@ -173,6 +173,7 @@ function draw(){
   pieSlice = 2*PI/inpText.length;
   rWaveOffset = 2*PI/inpText.length*rWaveCount;
 
+  if (window.__STG_CLEAN__ !== true) {
     push();
     translate(-width/2,-height/2);
     stroke(125);
@@ -223,6 +224,7 @@ function draw(){
     text("CAMERA: Z-Rotation " + zRotCamera,45,100);
 
     pop();
+  }
   
   noFill();
   strokeWeight(typeStroke);

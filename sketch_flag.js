@@ -196,7 +196,7 @@ function draw() {
   fill(50, 150, 150);
   textSize(10);
   textAlign(LEFT);
-    if(gifRecord == false){
+    if(gifRecord == false && window.__STG_CLEAN__ !== true){
       text("TEXT: Type X " + typeX, 15, 30);
       text("TEXT: Type Y " + typeY, 15, 60);
       text("TEXT: Weight " + typeStroke, 15, 90);

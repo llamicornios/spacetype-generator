@@ -173,6 +173,7 @@ function draw() {
   textAlign(RIGHT);
   textSize(10);
   textFont(font0);
+  if (window.__STG_CLEAN__ !== true) {
   text("Speed",width/2-160,22);
   text("Size",width/2-160,53);
   text("Complexity",width/2-160,73);
@@ -183,6 +184,7 @@ function draw() {
   text("Columns",width/2+160,53);
   text("Rows",width/2+160,73);
   text("Use vertical bars ('|')\nto create line breaks.",width/2 + 20,height-115);
+  }
   noFill();
   stroke(foreCol);
   line(width/2 - 200, height - 90, width/2 + 200, height - 90);

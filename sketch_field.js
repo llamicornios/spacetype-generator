@@ -211,6 +211,7 @@ function draw(){
 	xSpace = typeX + tracking;
 	ySpace = typeY + lineSpace + yStrechWave/2;
 
+  if (window.__STG_CLEAN__ !== true) {
     push();
     translate(-width/2,-height/2);
 
@@ -275,6 +276,7 @@ function draw(){
     text("CAMERA: Z-Rotation " + zRotCamera,45,100);
 
     pop();
+  }
 
   noFill();
   strokeWeight(typeStroke);

@@ -153,7 +153,7 @@ function draw() {
   noStroke();
   textSize(9);
 
-  if(gifRecord==false){
+  if(gifRecord==false && window.__STG_CLEAN__ !== true){
       text("TYPE: X-Scale " + typeX, 25, 20);
       text("TYPE: Weight " + typeStroke, 25, 50);
       text("TYPE: Tracking " + tracking, 25, 80);
