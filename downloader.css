@@ -1,8 +1,9 @@
-/* downloader.css — panel de descarga (esquina inferior izquierda, discreto) */
+/* downloader.css — panel de descarga (centro-derecha de la pantalla) */
 #dlPanel {
   position: fixed;
-  bottom: 10px;
-  left: 10px;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
   z-index: 9998;
   display: flex;
   flex-direction: column;
