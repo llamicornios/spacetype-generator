@@ -309,6 +309,7 @@ class Line {
   }
 
   displayDebug(){
+    if (window.__STG_CLEAN__ === true) return;
     push();
       translate(this.baseX, this.baseY);
 
